@@ -15,11 +15,13 @@ namespace WhiteLagoon.Infrastructure.Repository
 		public IVillaRepository villa { get; private set; }
 		public IVillaNumberRepository villaNumber { get; private set; }
 
-		public UnitOfWork(ApplicationDbContext db)
+        public IAmenityRepository amenity { get; private set; }
+        public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             villa = new VillaRepository(_db);
 			villaNumber = new VillaNumberRepository(_db);
+			amenity = new AmenityRepository(_db);
         }
 		public void Save() {
 		_db.SaveChanges();
